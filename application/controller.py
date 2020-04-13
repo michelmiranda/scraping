@@ -27,7 +27,7 @@ def scrapeBook(url):
 
 def getDownload(Book, owner):
     file_name = Book.name +' - '+Book.year
-    name_file_pdf = re.sub('/', '-', file_name)
+    file_name = re.sub('/', '-', file_name)
     if path.exists(file_name):
         print(f'Esse livro já foi baixado: {file_name}')
     else:
