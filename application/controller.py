@@ -17,7 +17,7 @@ def getPage(url):
     return BeautifulSoup(req, 'html.parser')
 
 
-def scrapeBooks(url):
+def scrapeBook(url):
     bs = getPage(url)
     url = bs.select('.test-bookpdf-link')[0]['href']
     name = bs.find('div', class_='page-title').find('h1').text
