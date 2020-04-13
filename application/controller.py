@@ -20,13 +20,13 @@ def getPage(url):
 def scrapeBook(url):
     bs = getPage(url)
     url = bs.select('.test-bookpdf-link')[0]['href']
-    name = bs.find('div', class_='page-title').find('h1').text
+    title = bs.find('div', class_='page-title').find('h1').text
     year = re.findall('(\d{4})', bs.find('span', id='copyright-info').text)[0]
-    return Book(url, name, year)
+    return Book(url, title, year)
 
 
 def getDownload(Book, owner):
-    file_name = Book.name +' - '+Book.year
+    file_name = Book.title +' - '+Book.year
     file_name = re.sub('/', '-', file_name)
     if path.exists(file_name):
         print(f'Esse livro já foi baixado: {file_name}')
