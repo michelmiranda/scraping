@@ -26,13 +26,13 @@ def scrapeBook(url):
 
 
 def getDownload(Book, owner):
-    name_file_pdf = Book.name +' - '+Book.year
-    name_file_pdf = re.sub('/', '-', name_file_pdf)
-    if path.exists(name_file_pdf):
-        print(f'Esse livro já foi baixado: {name_file_pdf}')
+    file_name = Book.name +' - '+Book.year
+    name_file_pdf = re.sub('/', '-', file_name)
+    if path.exists(file_name):
+        print(f'Esse livro já foi baixado: {file_name}')
     else:
-        with open(name_file_pdf, 'wb') as f:
-            print(f'Downloading: {name_file_pdf}')
+        with open(file_name, 'wb') as f:
+            print(f'Downloading: {file_name}')
             resp = requests.get(owner+Book.url, stream=True)
 
             content_length = int(resp.headers.get('content-length'))
